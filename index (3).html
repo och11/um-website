@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life at UM — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green:   #005030;
+      --orange:  #F47321;
+      --white:   #FAF8F4;
+      --ink:     #111111;
+      --sand:    #EDE8DF;
+      --mist:    rgba(0,80,48,0.06);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 3rem;
+      background: var(--green);
+      border-bottom: 3px solid var(--orange);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 900;
+      color: var(--white); letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--white); text-decoration: none;
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding-bottom: 3px;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.25s, color 0.25s;
+    }
+    .nav-links a:hover, .nav-links a.active { border-color: var(--orange); color: var(--orange); }
+
+    /* ── HERO ── */
+    .hero {
+      margin-top: 65px;
+      height: 92vh; min-height: 540px;
+      position: relative;
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.55);
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,80,48,0.85) 0%, transparent 55%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 4rem 4rem 5rem;
+      max-width: 780px;
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--orange); font-weight: 500; margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 900; line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .hero-title em { color: var(--orange); font-style: italic; }
+    .hero-sub {
+      font-size: 1.1rem; color: rgba(255,255,255,0.85);
+      line-height: 1.7; max-width: 520px;
+    }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: var(--orange); color: var(--white);
+      padding: 0.7rem 0; overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-inner {
+      display: inline-block;
+      animation: ticker 28s linear infinite;
+      font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500;
+    }
+    .ticker-inner span { margin: 0 3rem; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── SECTIONS ── */
+    .section { padding: 6rem 4rem; }
+    .section-label {
+      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--orange); font-weight: 500; margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700;
+      line-height: 1.15; color: var(--green);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── INTRO GRID ── */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .intro-text p {
+      font-size: 1.05rem; line-height: 1.85;
+      color: #333; margin-bottom: 1.2rem;
+    }
+    .stat-row {
+      display: flex; gap: 2.5rem; margin-top: 2.5rem;
+      border-top: 2px solid var(--sand);
+      padding-top: 2rem;
+    }
+    .stat { text-align: left; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem; font-weight: 900; color: var(--green); line-height: 1;
+    }
+    .stat-num span { color: var(--orange); }
+    .stat-label { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: #666; margin-top: 0.3rem; }
+
+    .intro-image-wrap {
+      position: relative;
+    }
+    .intro-image-wrap img {
+      width: 100%; height: 480px; object-fit: cover;
+      border-radius: 2px;
+      box-shadow: 12px 12px 0 var(--orange);
+    }
+    .intro-image-caption {
+      position: absolute; bottom: -1.5rem; left: 1rem;
+      background: var(--green); color: var(--white);
+      font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 0.4rem 0.8rem;
+    }
+
+    /* ── CARDS ── */
+    .cards-section { background: var(--sand); }
+    .cards-header { max-width: 600px; margin-bottom: 3rem; }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--white);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+    .card-img { width: 100%; height: 200px; object-fit: cover; display: block; }
+    .card-body { padding: 1.5rem; }
+    .card-tag {
+      font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--orange); font-weight: 500; margin-bottom: 0.5rem;
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 700; color: var(--green);
+      line-height: 1.3; margin-bottom: 0.75rem;
+    }
+    .card-text { font-size: 0.9rem; color: #555; line-height: 1.7; }
+
+    /* ── QUOTE BAND ── */
+    .quote-band {
+      background: var(--green);
+      padding: 5rem 4rem;
+      display: flex; align-items: center; gap: 4rem;
+    }
+    .quote-band blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      font-style: italic; color: var(--white);
+      line-height: 1.4; flex: 1;
+    }
+    .quote-band blockquote::before { content: '\201C'; color: var(--orange); font-size: 4rem; line-height: 0; vertical-align: -1.2rem; margin-right: 0.2rem; }
+    .quote-attr { color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 1.2rem; letter-spacing: 0.1em; }
+
+    /* ── PAGE LINKS ── */
+    .explore-section { background: var(--white); }
+    .explore-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+    .explore-card {
+      position: relative; overflow: hidden; height: 320px;
+      display: flex; align-items: flex-end;
+      text-decoration: none;
+    }
+    .explore-card img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.5);
+      transition: transform 0.5s, filter 0.5s;
+    }
+    .explore-card:hover img { transform: scale(1.05); filter: brightness(0.35); }
+    .explore-card-body {
+      position: relative; z-index: 2;
+      padding: 2rem;
+    }
+    .explore-card-tag { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+    .explore-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 700; color: var(--white);
+      line-height: 1.2;
+    }
+    .explore-arrow { display: inline-block; color: var(--orange); font-size: 1.5rem; margin-top: 0.5rem; transition: transform 0.3s; }
+    .explore-card:hover .explore-arrow { transform: translateX(6px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink); color: rgba(255,255,255,0.5);
+      padding: 2.5rem 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.8rem;
+    }
+    footer a { color: var(--orange); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero-content { padding: 2rem 1.5rem 3rem; }
+      .section { padding: 4rem 1.5rem; }
+      .intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .card-grid { grid-template-columns: 1fr; }
+      .explore-grid { grid-template-columns: 1fr; }
+      .quote-band { padding: 3rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">U<span>M</span> Life</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="academics.html">Academics & Athletics</a></li>
+      <li><a href="activities.html">Student Life</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img
+      src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=1800&q=80"
+      alt="University campus aerial view at sunset"
+    />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">University of Miami · Coral Gables, FL</div>
+      <h1 class="hero-title">
+        Where<br><em>Passion</em><br>Meets Purpose
+      </h1>
+      <p class="hero-sub">
+        Nestled in the heart of South Florida, the University of Miami is a place where
+        world-class academics, championship athletics, and vibrant campus life converge
+        under endless sunshine.
+      </p>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span>🌴 Coral Gables Campus</span>
+      <span>🏈 Go Canes!</span>
+      <span>🔬 Top-Tier Research</span>
+      <span>🌊 Minutes from the Beach</span>
+      <span>🎓 17,000+ Students</span>
+      <span>🌍 130+ Countries Represented</span>
+      <span>🏆 ACC Champions</span>
+      <span>🌴 Coral Gables Campus</span>
+      <span>🏈 Go Canes!</span>
+      <span>🔬 Top-Tier Research</span>
+      <span>🌊 Minutes from the Beach</span>
+      <span>🎓 17,000+ Students</span>
+      <span>🌍 130+ Countries Represented</span>
+      <span>🏆 ACC Champions</span>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="intro-grid">
+      <div class="intro-text">
+        <div class="section-label">About UM</div>
+        <h2>A Private Research University Like No Other</h2>
+        <p>
+          Founded in 1925, the University of Miami has grown into one of the nation's
+          premier private research universities, with more than 17,000 students from
+          around the globe. Set in Coral Gables — one of America's most beautiful planned
+          cities — UM offers a campus experience that blends tropical beauty with
+          intellectual rigor.
+        </p>
+        <p>
+          From the Frost School of Music to the Miller School of Medicine, UM's eleven
+          colleges and schools provide students with unparalleled opportunities to learn,
+          discover, and create. Our close-knit community fosters collaboration across
+          disciplines, producing graduates who lead in every field imaginable.
+        </p>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-num">17<span>K+</span></div>
+            <div class="stat-label">Students</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">11</div>
+            <div class="stat-label">Colleges</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">130<span>+</span></div>
+            <div class="stat-label">Countries</div>
+          </div>
+        </div>
+      </div>
+      <div class="intro-image-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=900&q=80"
+          alt="Students on a sunny university campus"
+        />
+        <div class="intro-image-caption">Coral Gables Campus</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDS -->
+  <section class="section cards-section">
+    <div class="cards-header">
+      <div class="section-label">Campus Life</div>
+      <h2>Everything You Need. All in One Place.</h2>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <img
+          class="card-img"
+          src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=700&q=80"
+          alt="Students in library studying"
+        />
+        <div class="card-body">
+          <div class="card-tag">Academics</div>
+          <div class="card-title">World-Class Faculty & Research</div>
+          <p class="card-text">UM faculty include Pulitzer Prize winners, Nobel laureates, and leaders at the forefront of their fields, mentoring the next generation of innovators.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img
+          class="card-img"
+          src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=700&q=80"
+          alt="Students at campus athletic event"
+        />
+        <div class="card-body">
+          <div class="card-tag">Athletics</div>
+          <div class="card-title">The Hurricanes Spirit</div>
+          <p class="card-text">Cheer on 17 Division I sports teams, including a legendary football program with five national championships — the pride of Coral Gables.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img
+          class="card-img"
+          src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&q=80"
+          alt="Students socializing outdoors"
+        />
+        <div class="card-body">
+          <div class="card-tag">Community</div>
+          <div class="card-title">A Vibrant Social Scene</div>
+          <p class="card-text">From lake parties to international festivals, UM's 200+ student organizations ensure there's always something happening across our stunning campus.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE BAND -->
+  <div class="quote-band">
+    <blockquote>
+      The U isn't just a university — it's a mindset. Here, the sun never sets on your ambitions.
+      <div class="quote-attr">— UM Student, Class of 2026</div>
+    </blockquote>
+  </div>
+
+  <!-- EXPLORE MORE -->
+  <section class="section explore-section">
+    <div class="section-label">Explore</div>
+    <h2>Discover Every Corner of UM Life</h2>
+    <div class="explore-grid">
+      <a class="explore-card" href="academics.html">
+        <img
+          src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=900&q=80"
+          alt="University lecture hall"
+        />
+        <div class="explore-card-body">
+          <div class="explore-card-tag">Discover</div>
+          <div class="explore-card-title">Academics &amp; Athletics</div>
+          <div class="explore-arrow">→</div>
+        </div>
+      </a>
+      <a class="explore-card" href="activities.html">
+        <img
+          src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&q=80"
+          alt="Student event outdoors"
+        />
+        <div class="explore-card-body">
+          <div class="explore-card-tag">Discover</div>
+          <div class="explore-card-title">Student Life &amp; Events</div>
+          <div class="explore-arrow">→</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2025 Life at the University of Miami &mdash; Educational Project</span>
+    <span>
+      <a href="index.html">Home</a> &nbsp;|&nbsp;
+      <a href="academics.html">Academics</a> &nbsp;|&nbsp;
+      <a href="activities.html">Student Life</a>
+    </span>
+  </footer>
+
+</body>
+</html>
